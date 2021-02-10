@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>
+        TacoCloud
+    </title>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .head {
+            text-align: center;
+        }
+
+        .form {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <img th:src="@{/images/TacoCloud.png}">
+        <h3>List of tacos in this order:</h3>
+        <ul>
+            <div th:each="taco : ${order.tacos}">
+                <li th:text="${taco.name}"></li>
+            </div>
+        </ul>
+        <a href="/design"><button>Design another</button></a>
+    </div>
+    <br>
+    <div class="form">
+        <form method="POST" th:action="@{/order}" th:object="${order}">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+            <br>
+            <label for="address">Address</label>
+            <input type="text" th:field="*{address}">
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address Error</span>
+            <br>
+            <label for="ccNum">Credit card number:</label>
+            <input type="text" th:field="*{ccNum}">
+            <span th:if="${#fields.hasErrors('ccNum')}" th:errors="*{ccNum}">ccNum Error</span>
+            <br>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>

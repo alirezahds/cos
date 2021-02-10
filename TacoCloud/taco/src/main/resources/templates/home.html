@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Taco cloud</title>
+    <style>
+        .main {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <img th:src="@{/images/TacoCloud.png}">
+    <div class="main">
+        <h1>Welcome to taco cloud.</h1>
+        <a href="/design"><button>Design</button></a>
+    </div>
+</body>
+
+</html>
